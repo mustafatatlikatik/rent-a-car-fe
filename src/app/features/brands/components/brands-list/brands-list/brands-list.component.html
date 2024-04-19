@@ -1,0 +1,14 @@
+<ul class="list-group text-center w-75">
+  <h3>Brands</h3>
+  <!-- < Angular 17 -->
+  <ng-container>
+    <li *ngFor="let item of list"
+    (click)="onSelectedBrand(item.id)"
+    [ngClass]="{active:selectedBrandId===item.id}"
+    class="list-group-item">
+      {{item.name}}
+    </li>
+  </ng-container>
+
+  </ul>
+

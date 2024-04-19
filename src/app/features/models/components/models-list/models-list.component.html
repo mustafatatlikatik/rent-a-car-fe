@@ -1,0 +1,48 @@
+<!-- track $index yerine track item.id yazabiliriz -->
+<div class="row">
+  <div class="col">
+    <app-brands-list (brandSelected)="getModelsByBrand($event)"></app-brands-list>
+  </div>
+  <div class="col">
+    <h3>Models</h3>
+    <table class="table w-75 border">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Model Year</th>
+          <th>Daily Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let item of list">
+          <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.modelYear }}</td>
+            <td>{{ item.dailyPrice }}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+
+    <!-- <ul class="list-group text-center">
+      <ng-container *ngFor="let item of list">
+        <li class="list-group-item w-75">
+          <div class="row align-items-center">
+            <div class="col">{{ item.name }}</div>
+            <div class="col">{{ item.modelYear }}</div>
+            <div class="col">{{ item.dailyPrice }}</div>
+          </div>
+        </li>
+      </ng-container>
+    </ul> -->
+
+
+  </div>
+</div>
+
+
+
+
+<!-- @for (item of list; track $index) {
+  <p>{{item.name}} {{$index}}</p>
+} -->
