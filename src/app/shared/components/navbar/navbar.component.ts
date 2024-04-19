@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MainLayoutComponent } from '../../layouts/main-layout/main-layout.component';
-import { RouterModule } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 export type NavbarItem = {
   label: string;
@@ -12,7 +12,7 @@ export type NavbarItem = {
   selector: 'app-navbar',
   standalone: true,
   imports: [
-    CommonModule, MainLayoutComponent, RouterModule
+    CommonModule, MainLayoutComponent, RouterLink
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',

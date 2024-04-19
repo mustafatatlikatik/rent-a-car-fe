@@ -1,0 +1,8 @@
+<form [formGroup]="form" (submit)="onFormSumbit()" >
+  Name: <input type="text" formControlName="name" >
+  Brand Id: <input type="text" formControlName="brandId" >
+  Model Year: <input type="text" formControlName="modelYear" >
+  Image Url: <input type="text" formControlName="imageUrl" >
+  Daily Price: <input type="text" formControlName="dailyPrice" >
+  <button type="submit">Submit</button>
+</form>

@@ -2,10 +2,6 @@
   display: block;
 }
 
-p{
+li, p{
   cursor: pointer;
-
-  &:hover{
-    color: #8a1818;
-  }
 }

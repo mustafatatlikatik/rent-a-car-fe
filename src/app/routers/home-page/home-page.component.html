@@ -5,13 +5,28 @@
 
 importla yaparsak bu şekilde, pathler app.routers ile yaparsak alttaki gibi yazılır
 -->
-<div class="shadow p-3 mb-5 bg-body-tertiary ">
+<div class="shadow p-3 mb-5 bg-body-tertiary">
   <h3 class="pt-3 text-center fst-italic">Find the best car for you!</h3>
   <img
     src="https://raw.githubusercontent.com/ahmet-cetinkaya-instruction/rent-a-car-fake-backend/master/src/data/car-953357_1280.png"
-    alt="Crossland Image"
+    alt="Image"
     class="w-25 mx-auto d-block"
   />
 
 </div>
-<app-models-list></app-models-list>
+<div class="row">
+  <div class="col">
+    <app-brands-list (selectBrand)="onBrandSelect($event)"></app-brands-list>
+  </div>
+
+  <div class="col">
+    Search: <input type="text" [(ngModel)]="searchBrandName" />
+    <button class="mx-2" type="submit">Submit</button>
+    <app-models-list
+      [brandId]="selectedBrandId"
+      [searchBrandName]="searchBrandName"
+    >
+
+    </app-models-list>
+  </div>
+</div>

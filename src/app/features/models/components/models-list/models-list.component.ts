@@ -4,23 +4,27 @@ import {
   ChangeDetectorRef,
   Component,
   Input,
-  OnInit
+  OnChanges,
+  OnInit,
+  SimpleChanges
 } from '@angular/core';
 import { ModelsApiService } from '../../services/modelsApi.service';
 import { ModelListItemDto } from '../../models/model-list-item-dto';
-import { BrandsListComponent } from '../../../brands/components/brands-list/brands-list/brands-list.component';
 
 @Component({
   selector: 'app-models-list',
   standalone: true,
-  imports: [CommonModule, BrandsListComponent],
+  imports: [CommonModule],
   templateUrl: './models-list.component.html',
   styleUrl: './models-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ModelsListComponent implements OnInit {
+export class ModelsListComponent implements OnInit, OnChanges {
+  @Input() brandId: number | null = null; //homel-page.html'den alıyor
+  @Input() searchBrandName: string | null = null;
+
   public list: ModelListItemDto[] = [];
-  @Input() modelList:ModelListItemDto[] = [];
+  //@Input() modelList:ModelListItemDto[] = [];
 
 
   constructor(
@@ -29,17 +33,30 @@ export class ModelsListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.modelsApiService.getList().subscribe((response) => {
+    this.getList();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+    if (changes['brandId'] && changes['brandId'].currentValue !== changes['brandId'].previousValue) {
+      this.getList();
+    }
+    if (changes['searchBrandName'] && changes['searchBrandName'].currentValue !== changes['searchBrandName'].previousValue) {
+      this.getList();
+    }
+  }
+
+  private getList() {
+    this.modelsApiService.getList(this.brandId, this.searchBrandName).subscribe((response) => {
       this.list = response;
       this.change.markForCheck();
     });
   }
 
-
-  getModelsByBrand(brandId: number) {
-    this.modelsApiService.getModelsByBrand(brandId)
-      .subscribe(models => this.list = models);
-  }
+  // getModelsByBrand(brandId: number) {
+  //   this.modelsApiService.getModelsByBrand(brandId)
+  //     .subscribe(models => this.list = models);
+  // }
 
 
 }

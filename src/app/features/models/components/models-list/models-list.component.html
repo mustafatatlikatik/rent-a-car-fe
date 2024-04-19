@@ -1,9 +1,4 @@
 <!-- track $index yerine track item.id yazabiliriz -->
-<div class="row">
-  <div class="col">
-    <app-brands-list (brandSelected)="getModelsByBrand($event)"></app-brands-list>
-  </div>
-  <div class="col">
     <h3>Models</h3>
     <table class="table w-75 border">
       <thead>
@@ -24,6 +19,23 @@
       </tbody>
     </table>
 
+    <nav class="">
+      <ul class="pagination">
+        <li class="page-item disabled">
+          <a class="page-link">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item active" aria-current="page">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+
+
     <!-- <ul class="list-group text-center">
       <ng-container *ngFor="let item of list">
         <li class="list-group-item w-75">
@@ -35,10 +47,6 @@
         </li>
       </ng-container>
     </ul> -->
-
-
-  </div>
-</div>
 
 
 
