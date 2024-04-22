@@ -11,13 +11,15 @@
   </ng-container>
 
   </ul> -->
-<div class="container-fluid mx-5 ">
-  <p (click)="onBrandClick(null)">All</p>
+<div class="container-fluid mx-5 my-5">
+  <p class="btn btn-outline-primary " (click)="onBrandClick(null)">All</p>
 
-  <h3>Brands</h3>
-  <ul class="list-group w-50">
-  @for (item of list; track $index) {
-  <li class="list-group-item" (click)="onBrandClick(item.id)">{{ item.name }}</li>
-  }
-</ul>
+  <h3 class="text-primary">Brands</h3>
+  <ul class="list-group w-50 ">
+    @for (item of list; track $index) {
+    <li class="list-group-item fs-5" (click)="onBrandClick(item.id)" [ngClass]="{ 'active': selectedItemId === item.id-1 }">
+      {{ item.name }}
+    </li>
+    }
+  </ul>
 </div>

@@ -7,6 +7,9 @@ import { NotFoundPageComponent } from './routers/not-found-page/not-found-page.c
 import { CreateBrandPageComponent } from './routers/create-brand-page/create-brand-page.component';
 import { CreateModelPageComponent } from './routers/create-model-page/create-model-page.component';
 import { UpdateModelPageComponent } from './routers/update-model-page/update-model-page.component';
+import { ModelDetailsPageComponent } from './routers/model-details-page/model-details-page.component';
+import { CustomerPageComponent } from './routers/customer-page/customer-page.component';
+import { RentalPageComponent } from './routers/rental-page/rental-page.component';
 
 export const routes: Routes = [
   {
@@ -25,8 +28,20 @@ export const routes: Routes = [
         component: HomePageComponent
       },
       {
+        path: "models/:modelId", //home/models/{id}
+        component: ModelDetailsPageComponent
+      },
+      {
         path: 'brands',
         component: HomePageComponent
+      },
+      {
+        path: "customers",
+        component: CustomerPageComponent
+      },
+      {
+        path:"rentals",
+        component: RentalPageComponent
       }
     ]
   },

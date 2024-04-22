@@ -20,8 +20,18 @@ importla yaparsak bu şekilde, pathler app.routers ile yaparsak alttaki gibi yaz
   </div>
 
   <div class="col">
-    Search: <input type="text" [(ngModel)]="searchBrandName" />
-    <button class="mx-2" type="submit">Submit</button>
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <label for="inputModel" class="col-form-label fs-5 fst-italic">Model: </label>
+      </div>
+      <div class="col-auto">
+        <input type="text" id="inputModel" class="form-control" [(ngModel)]="searchBrandName">
+      </div>
+
+      <div class="col-auto">
+        <button class="btn btn-outline-primary" type="submit">Submit</button>
+      </div>
+    </div>
     <app-models-list
       [brandId]="selectedBrandId"
       [searchBrandName]="searchBrandName"
@@ -29,4 +39,14 @@ importla yaparsak bu şekilde, pathler app.routers ile yaparsak alttaki gibi yaz
 
     </app-models-list>
   </div>
+
+
+
+
+
+
+
+
+
+
 </div>

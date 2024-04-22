@@ -1,3 +1,4 @@
+import { Brand } from "./model-list-item-dto";
 
 export interface PostModelResponse {
   id: number;
@@ -6,6 +7,7 @@ export interface PostModelResponse {
   modelYear: number;
   imageUrl: string;
   dailyPrice: number;
+  brand: Brand;
 }
 
 

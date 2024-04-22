@@ -1,0 +1,38 @@
+<div class="container-fluid mx-5">
+  <h3 class="text-primary my-5">Rentals</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Brand Name</th>
+        <th>Model Name</th>
+        <th>Customer Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Rental State</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of list; track $index) {
+        <tr>
+          <td>{{ item.id }}</td>
+          <td>{{item.car.model.brand.name}}</td>
+          <td>{{item.car.model.name}}</td>
+          <td>{{ item.customer.firstName }} {{ item.customer.lastName }}</td>
+          <td>{{ item.startDate }}</td>
+          <td>{{ item.endDate }}</td>
+          @if (item.car.state === 1) {
+            <td>Rental</td>
+          }
+          @else if (item.car.state === 2) {
+            <td >Available</td>
+          }
+          @else {
+            <td >Under Maintanance</td>
+          }
+
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

@@ -20,7 +20,7 @@ import { BrandListItemDto } from '../../models/brand-list-item-dto';
 })
 export class BrandsListComponent implements OnInit {
   @Output() selectBrand = new EventEmitter<number | null>(); //home-page.html
-
+  selectedItemId: number | null = null;
   list: Array<BrandListItemDto> = [];
 
   // public list: BrandListItemDto[] = [];
@@ -47,6 +47,7 @@ export class BrandsListComponent implements OnInit {
   }
 
   onBrandClick(id: number | null): void {
+    this.selectedItemId = this.list.findIndex(item => item.id === id);
     this.selectBrand.emit(id);
   }
 
