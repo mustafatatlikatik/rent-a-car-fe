@@ -7,7 +7,14 @@ th{
   color: #0d6efd;
 }
 
-.list-group-item:hover {
+.list-group-item:hover{
   background-color: #007bff;
+  color: white;
+}
+
+a{
+  color: black;
+}
+a:hover{
   color: white;
 }

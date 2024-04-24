@@ -72,6 +72,7 @@ export class ModelsListComponent implements OnInit, OnChanges {
         next: (response) => {
           if (response.length === 0) {
             this.hasPageNext = false;
+            this.pageIndex = this.pageIndex-1;
             return;
           }
           if (!this.hasPageNext) this.hasPageNext = true;

@@ -1,5 +1,18 @@
-<form [formGroup]="form" (submit)="onFormSumbit()" >
-  Id: <input type="number" formControlName="id" >
-  Name: <input type="text" formControlName="name" >
-  <button type="submit">Submit</button>
+<form [formGroup]="form" (submit)="onFormSubmit()" class="w-50 mx-auto" novalidate>
+  <div class="mb-3">
+      <label for="id" class="col-form-label">Id:</label>
+      <input type="number" id="id" class="form-control" formControlName="id" required>
+    <div *ngIf="form.get('id')?.invalid && (form.get('id')?.dirty || form.get('id')?.touched)" class="col-auto">
+      <span>{{ form.get('id')?.errors | controlErrorMessage }}</span>
+    </div>
+  </div>
+    <div class="mb-3">
+        <label for="name" class="form-label">Name:</label>
+        <input type="text" id="name" class="form-control" formControlName="name" required>
+      <div *ngIf="form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)" class="col-auto">
+        <span class="text-danger">{{ form.get('name')?.errors | controlErrorMessage }}</span>
+      </div>
+    </div>
+  <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
 </form>
+

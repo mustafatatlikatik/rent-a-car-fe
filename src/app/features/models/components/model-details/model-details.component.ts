@@ -2,12 +2,14 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
 import { ModelDetailsDto } from '../../models/model-details-dto';
 import { ModelsApiService } from '../../services/modelsApi.service';
+import { VatAddPipe } from '../../../../core/pipes/vat-add.pipe';
 
 @Component({
   selector: 'app-model-details',
   standalone: true,
   imports: [
     CommonModule,
+    VatAddPipe
   ],
   templateUrl: './model-details.component.html',
   styleUrl: './model-details.component.scss',

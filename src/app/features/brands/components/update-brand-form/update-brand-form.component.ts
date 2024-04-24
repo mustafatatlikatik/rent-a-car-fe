@@ -1,13 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BrandsApiService } from '../../services/brandsApi.service';
 import { PutBrandRequest } from '../../models/put-brand-request';
+import { ControlErrorMessagePipe } from '../../../../core/pipes/control-error-message.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-brand-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, ControlErrorMessagePipe],
   templateUrl: './update-brand-form.component.html',
   styleUrl: './update-brand-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -15,12 +17,20 @@ import { PutBrandRequest } from '../../models/put-brand-request';
 export class UpdateBrandFormComponent {
   form: FormGroup = this.fb.group({
     id: [],
-    name: [],
+    name: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(20)
+      ],
+    ],
   });
 
   constructor(
     private fb: FormBuilder,
-    private brandsApiService: BrandsApiService
+    private brandsApiService: BrandsApiService,
+    private router: Router
   ) {}
 
   updateBrand() {
@@ -38,11 +48,12 @@ export class UpdateBrandFormComponent {
       complete: () => {
         console.log('Brand updated successfully');
         this.form.reset();
+        this.router.navigate(['/home/brands'])
       },
     });
   }
 
-  onFormSumbit() {
+  onFormSubmit() {
     if (this.form.invalid) {
       console.error('Form is invalid');
       return;

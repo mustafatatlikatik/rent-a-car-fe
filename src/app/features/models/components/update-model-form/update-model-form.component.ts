@@ -1,15 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ModelsApiService } from '../../services/modelsApi.service';
 import { PutModelRequest } from '../../models/put-model-request';
+import { ControlErrorMessagePipe } from '../../../../core/pipes/control-error-message.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-model-form',
   standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ControlErrorMessagePipe
   ],
   templateUrl: './update-model-form.component.html',
   styleUrl: './update-model-form.component.scss',
@@ -19,7 +22,12 @@ export class UpdateModelFormComponent {
   form: FormGroup = this.fb.group({
     id: [],
     brandId: [],
-    name: [],
+    name: ['',
+    [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(20)
+    ],],
     modelYear: [],
     imageUrl: [],
     dailyPrice: []
@@ -27,7 +35,8 @@ export class UpdateModelFormComponent {
 
   constructor(
     private fb: FormBuilder,
-    private modelsApiService: ModelsApiService
+    private modelsApiService: ModelsApiService,
+    private router: Router
   ) {}
 
   updateModel() {
@@ -49,11 +58,12 @@ export class UpdateModelFormComponent {
       complete: () => {
         console.log('Model updated successfully');
         this.form.reset();
+        this.router.navigate(['/home/models'])
       },
     });
   }
 
-  onFormSumbit() {
+  onFormSubmit() {
     if (this.form.invalid) {
       console.error('Form is invalid');
       return;

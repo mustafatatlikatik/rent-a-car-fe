@@ -1,15 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ModelsApiService } from '../../services/modelsApi.service';
 import { PostModelRequest } from '../../models/post-model-request';
+import { ControlErrorMessagePipe } from '../../../../core/pipes/control-error-message.pipe';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-create-model-form',
   standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ControlErrorMessagePipe,
+    RouterModule
   ],
   templateUrl: './create-model-form.component.html',
   styleUrl: './create-model-form.component.scss',
@@ -18,7 +22,11 @@ import { PostModelRequest } from '../../models/post-model-request';
 export class CreateModelFormComponent {
   form: FormGroup = this.fb.group({
     brandId: [],
-    name: [],
+    name: ['',
+    [Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(20)
+    ],],
     modelYear: [],
     imageUrl: [],
     dailyPrice: [],
@@ -27,6 +35,7 @@ export class CreateModelFormComponent {
   constructor(
     private fb: FormBuilder,
     private modelsApiService: ModelsApiService,
+    private router: Router
   ) {}
 
 
@@ -49,11 +58,12 @@ export class CreateModelFormComponent {
       complete: () => {
         console.log('Model created successfully');
         this.form.reset();
+        this.router.navigate(['/home/models']);
       },
     });
   }
 
-  onFormSumbit() {
+  onFormSubmit() {
     if (this.form.invalid) {
       console.error('Form is invalid');
       return;

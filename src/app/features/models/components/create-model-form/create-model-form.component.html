@@ -1,8 +1,38 @@
-<form [formGroup]="form" (submit)="onFormSumbit()" >
-  Name: <input type="text" formControlName="name" >
-  Brand Id: <input type="text" formControlName="brandId" >
-  Model Year: <input type="text" formControlName="modelYear" >
-  Image Url: <input type="text" formControlName="imageUrl" >
-  Daily Price: <input type="text" formControlName="dailyPrice" >
-  <button type="submit">Submit</button>
+<form [formGroup]="form" (submit)="onFormSubmit()" class=" w-50 mx-auto" novalidate>
+  <div class="mb-3">
+    <label for="name" class="form-label">Name:</label>
+    <input type="text" id="name" class="form-control" formControlName="name" required>
+    <div *ngIf="form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)">
+      <span>{{ form.get('name')?.errors | controlErrorMessage }}</span>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="brandId" class="form-label">Brand Id:</label>
+    <input type="text" id="brandId" class="form-control" formControlName="brandId" required>
+    <div *ngIf="form.get('brandId')?.invalid && (form.get('brandId')?.dirty || form.get('brandId')?.touched)">
+      <span>{{ form.get('brandId')?.errors | controlErrorMessage }}</span>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="modelYear" class="form-label">Model Year:</label>
+    <input type="text" id="modelYear" class="form-control" formControlName="modelYear" required>
+    <div *ngIf="form.get('modelYear')?.invalid && (form.get('modelYear')?.dirty || form.get('modelYear')?.touched)">
+      <span>{{ form.get('modelYear')?.errors | controlErrorMessage }}</span>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="imageUrl" class="form-label">Image Url:</label>
+    <input type="text" id="imageUrl" class="form-control" formControlName="imageUrl" required>
+    <div *ngIf="form.get('imageUrl')?.invalid && (form.get('imageUrl')?.dirty || form.get('imageUrl')?.touched)">
+      <span>{{ form.get('imageUrl')?.errors | controlErrorMessage }}</span>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="dailyPrice" class="form-label">Daily Price:</label>
+    <input type="text" id="dailyPrice" class="form-control" formControlName="dailyPrice" required>
+    <div *ngIf="form.get('dailyPrice')?.invalid && (form.get('dailyPrice')?.dirty || form.get('dailyPrice')?.touched)">
+      <span>{{ form.get('dailyPrice')?.errors | controlErrorMessage }}</span>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
 </form>

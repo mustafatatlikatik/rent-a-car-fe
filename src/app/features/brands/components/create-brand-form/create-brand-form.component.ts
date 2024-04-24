@@ -3,13 +3,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BrandsApiService } from '../../services/brandsApi.service';
 import { PostBrandRequest } from '../../models/post-brand-request';
+import { ControlErrorMessagePipe } from '../../../../core/pipes/control-error-message.pipe';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-create-brand-form',
   standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ControlErrorMessagePipe,
+    RouterModule
   ],
   templateUrl: './create-brand-form.component.html',
   styleUrl: './create-brand-form.component.scss',
@@ -19,14 +23,19 @@ export class CreateBrandFormComponent {
   form: FormGroup = this.fb.group({
     // Form Controls name isminde bir from control var
     name: [
-      '', // [0]: başlangıç değeri
-      [Validators.required], // [1]: validasyonlar
+      '',
+      [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(20)
+      ],
     ],
   });
 
   constructor(
     private fb: FormBuilder,
-    private brandsApiService: BrandsApiService
+    private brandsApiService: BrandsApiService,
+    private router: Router
   ) {}
 
   createBrand() {
@@ -43,11 +52,12 @@ export class CreateBrandFormComponent {
       complete: () => {
         console.log('Brand created successfully');
         this.form.reset();
+        this.router.navigate(['/home/brands']);
       },
     });
   }
 
-  onFormSumbit() {
+  onFormSubmit() {
     if (this.form.invalid) {
       console.error('Form is invalid');
       return;
