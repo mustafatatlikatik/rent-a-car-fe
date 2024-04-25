@@ -1,0 +1,34 @@
+ANGULAR BUILT-IN DIRECTIVES
+Angularda directives (direktifler) HTML etiketlerine/elementlerine özellik eklememizi sağlar.
+Angularda 3 farklı Directives tipi vardır:
+Components Directives: Template ile birlikte kullanılır. En yaygın directive türüdür. Angular componentleri oluşturmak ve yönetmek için oluşturulan temel yapıdır.
+<app-sample></app-sample>
+Attribute Directives: Attribute direktifleri HTML etiketlerine eklenebilen ve eklendiği elemente etki eden direktiflerdir. Attribute direktifleri, özellikle elementin görüntüsünü değiştirmek, kullanıcı etkileşimlerine tepki vermek veya genel olarak HTML elemanına özel davranışlar eklemek için kullanılır.
+1.NgClass: Bir HTML elementin CSS sınıflarını dinamik olarak kontrol etmemize yarar.
+<div [ngClass]="{ 'active': isActive, 'highlight': isHighlighted }">Bu bir div elementidir.</div>
+2.NgStyle: Bir HTML öğesine dinamik olarak stil eklemek için kullanılır.“True” veya “false” durumlarında, HTML elementinin nasıl görüneceğine stil olarak istediğimiz şekilde karar verebiliriz.
+<p [ngStyle]="{ backgroundColor: (user.onlineStatus ? 'green' : 'red') }">Bu bir metin öğesidir.</p>
+3.NgModel: Bir form elemanının değerini ve durumunu kontrol etmek için kullanılan bir attribute direktifidir. Genellikle çift yönlü veri bağlaması (two-way data binding) için kullanılır. Elementin o anki değerini tutar da diyebiliriz.
+<input [(ngModel)]="username" placeholder="Kullanıcı Adı">
+
+Structural Directives: DOM elementlerini ekleyip kaldırarak DOM yapısını değiştirir.
+1.NgIf: Bir koşulun doğru veya yanlış olmasına bağlı olarak bir HTML öğesini DOM'dan eklemek veya kaldırmak için kullanılır.
+<div *ngIf="isLoggedIn">Kullanıcı giriş yaptı.</div>
+2.NgFor: Bir dizi veya nesne koleksiyonunu döngülemek ve her bir öğe için bir HTML öğesi oluşturmak için kullanılır.
+<ul>
+  <li *ngFor="let item of items">{{ item }}</li>
+</ul>
+3.NgSwitch: Birden fazla koşul durumu arasında değişim yapmak için kullanılır.
+<div [ngSwitch]="userRole">
+  <p *ngSwitchCase="'admin'">Yönetici kullanıcı.</p>
+  <p *ngSwitchCase="'editor'">Editör kullanıcı.</p>
+  <p *ngSwitchDefault>Standart kullanıcı.</p>
+</div>
+4.NgContainer: Bu direktifimiz bize tamamı ile bir element oluşturur ve genellikle ngIf veya ngFor direktifleriyle beraber belli kalıpları gösterip, göstermememize yarar.
+<ng-container *ngIf="condition">
+  <!-- Bu içerik sadece koşul doğru olduğunda görünür olacaktır -->
+  <p>Mesaj</p>
+</ng-container>
+5.NgTemplateOutlet: Bir Angular şablonunu dinamik olarak yerleştirmek için kullanılır.
+<ng-container *ngTemplateOutlet="templateRef"></ng-container>
+
