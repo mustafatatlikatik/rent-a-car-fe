@@ -6,11 +6,12 @@ import { PutBrandRequest } from '../../models/put-brand-request';
 import { ControlErrorMessagePipe } from '../../../../core/pipes/control-error-message.pipe';
 import { Router } from '@angular/router';
 import { IfNotDirective } from '../../../../core/directives/if-not.directive';
+import { NoCharacterInputDirective } from '../../../../core/directives/no-character-input.directive';
 
 @Component({
   selector: 'app-update-brand-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ControlErrorMessagePipe, IfNotDirective],
+  imports: [CommonModule, ReactiveFormsModule, ControlErrorMessagePipe, IfNotDirective, NoCharacterInputDirective],
   templateUrl: './update-brand-form.component.html',
   styleUrl: './update-brand-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

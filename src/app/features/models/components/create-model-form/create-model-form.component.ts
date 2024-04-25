@@ -6,6 +6,7 @@ import { PostModelRequest } from '../../models/post-model-request';
 import { ControlErrorMessagePipe } from '../../../../core/pipes/control-error-message.pipe';
 import { Router, RouterModule } from '@angular/router';
 import { IfNotDirective } from '../../../../core/directives/if-not.directive';
+import { NoCharacterInputDirective } from '../../../../core/directives/no-character-input.directive';
 
 @Component({
   selector: 'app-create-model-form',
@@ -15,7 +16,8 @@ import { IfNotDirective } from '../../../../core/directives/if-not.directive';
     ReactiveFormsModule,
     ControlErrorMessagePipe,
     RouterModule,
-    IfNotDirective
+    IfNotDirective,
+    NoCharacterInputDirective
   ],
   templateUrl: './create-model-form.component.html',
   styleUrl: './create-model-form.component.scss',

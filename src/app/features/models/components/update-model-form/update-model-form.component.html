@@ -8,7 +8,7 @@
   </div>
   <div class="mb-3">
     <label for="name" class="form-label">Name:</label>
-    <input type="text" id="name" class="form-control" formControlName="name" required>
+    <input appNoCharacterInput type="text" id="name" class="form-control" formControlName="name" required>
     <div *ngIf="form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)">
       <span>{{ form.get('name')?.errors | controlErrorMessage }}</span>
     </div>
