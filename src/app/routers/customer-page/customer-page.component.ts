@@ -7,7 +7,7 @@ import { CustomerListComponent } from '../../features/customers/components/custo
   standalone: true,
   imports: [
     CommonModule,
-    CustomerListComponent
+    CustomerListComponent,
   ],
   templateUrl: './customer-page.component.html',
   styleUrl: './customer-page.component.scss',

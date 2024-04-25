@@ -3,17 +3,19 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  EventEmitter, OnInit,
-  Output
+  EventEmitter,
+  OnInit,
+  Output,
 } from '@angular/core';
 import { BrandsApiService } from '../../services/brandsApi.service';
 import { BrandListItemDto } from '../../models/brand-list-item-dto';
+import { MultipleDirective } from '../../../../core/directives/multiple.directive';
 
 
 @Component({
   selector: 'app-brands-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MultipleDirective],
   templateUrl: './brands-list.component.html',
   styleUrl: './brands-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

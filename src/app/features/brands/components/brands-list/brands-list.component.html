@@ -16,16 +16,18 @@
     <h3 class="text-primary">Brands</h3>
     <p class="btn btn-outline-primary" (click)="onBrandClick(null)">All</p>
   </div>
+  <div>
+    <ul class="list-group ">
+      @for (item of list; track $index) {
+      <li
+        class="list-group-item fs-5"
+        (click)="onBrandClick(item.id)"
+        [ngClass]="{ active: selectedItemId === item.id - 1 }"
+      >
+        {{ item.name }}
+      </li>
+      }
+    </ul>
+  </div>
 
-  <ul class="list-group ">
-    @for (item of list; track $index) {
-    <li
-      class="list-group-item fs-5"
-      (click)="onBrandClick(item.id)"
-      [ngClass]="{ active: selectedItemId === item.id - 1 }"
-    >
-      {{ item.name }}
-    </li>
-    }
-  </ul>
 </div>

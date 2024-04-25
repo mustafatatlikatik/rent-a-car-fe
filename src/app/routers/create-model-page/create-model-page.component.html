@@ -1,2 +1,10 @@
 <h1 class="text-center my-5 text-primary">Create Model</h1>
-<app-create-model-form></app-create-model-form>
+<div *appWelcome="3000; then contentRef">
+  <app-welcome-page></app-welcome-page>
+</div>
+
+<ng-template #contentRef>
+  <app-create-model-form></app-create-model-form>
+</ng-template>
+
+
