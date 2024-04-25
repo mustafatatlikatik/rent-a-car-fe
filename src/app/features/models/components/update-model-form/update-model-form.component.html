@@ -12,6 +12,7 @@
     <div *ngIf="form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)">
       <span>{{ form.get('name')?.errors | controlErrorMessage }}</span>
     </div>
+    <span class="text-success" *appIfNot="form.get('name')!.invalid">This field valid.</span>
   </div>
   <div class="mb-3">
     <label for="brandId" class="form-label">Brand Id:</label>

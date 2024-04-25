@@ -5,6 +5,7 @@ import { ModelsApiService } from '../../services/modelsApi.service';
 import { PutModelRequest } from '../../models/put-model-request';
 import { ControlErrorMessagePipe } from '../../../../core/pipes/control-error-message.pipe';
 import { Router } from '@angular/router';
+import { IfNotDirective } from '../../../../core/directives/if-not.directive';
 
 @Component({
   selector: 'app-update-model-form',
@@ -12,7 +13,8 @@ import { Router } from '@angular/router';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    ControlErrorMessagePipe
+    ControlErrorMessagePipe,
+    IfNotDirective
   ],
   templateUrl: './update-model-form.component.html',
   styleUrl: './update-model-form.component.scss',
