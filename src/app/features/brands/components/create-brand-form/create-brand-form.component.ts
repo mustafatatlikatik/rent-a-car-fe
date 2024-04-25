@@ -5,6 +5,7 @@ import { BrandsApiService } from '../../services/brandsApi.service';
 import { PostBrandRequest } from '../../models/post-brand-request';
 import { ControlErrorMessagePipe } from '../../../../core/pipes/control-error-message.pipe';
 import { Router, RouterModule } from '@angular/router';
+import { IfNotDirective } from '../../../../core/directives/if-not.directive';
 
 @Component({
   selector: 'app-create-brand-form',
@@ -13,7 +14,8 @@ import { Router, RouterModule } from '@angular/router';
     CommonModule,
     ReactiveFormsModule,
     ControlErrorMessagePipe,
-    RouterModule
+    RouterModule,
+    IfNotDirective
   ],
   templateUrl: './create-brand-form.component.html',
   styleUrl: './create-brand-form.component.scss',

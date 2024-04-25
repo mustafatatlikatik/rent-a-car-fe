@@ -14,7 +14,7 @@ export class HighlightDirective implements OnInit{
 
   ngOnInit(): void {
     const span = document.createElement('span');
-    span.style.backgroundColor = 'dark-blue';
+    span.style.backgroundColor = '';
     span.style.color = 'black'
     span.innerText = "  On sale!  ";
 

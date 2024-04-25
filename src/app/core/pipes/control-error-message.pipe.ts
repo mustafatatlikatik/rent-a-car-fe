@@ -22,7 +22,7 @@ export class ControlErrorMessagePipe implements PipeTransform {
 
     // if (control?.['required']) {
     //   return 'Bu alan zorunludur.';
-    // }
+    // }S
 
     // if (control?.['customError']) {
     //   return 'Bir hata meydana geldi.';
