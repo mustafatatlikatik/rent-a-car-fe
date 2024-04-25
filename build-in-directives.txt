@@ -32,3 +32,7 @@ Structural Directives: DOM elementlerini ekleyip kaldırarak DOM yapısını de�
 5.NgTemplateOutlet: Bir Angular şablonunu dinamik olarak yerleştirmek için kullanılır.
 <ng-container *ngTemplateOutlet="templateRef"></ng-container>
 
+Mustafa Tatlıkatık GitHub: https://github.com/mustafatatlikatik/rent-a-car-fe
+B. Kaan Yumak GitHub: https://github.com/b36190626/etiya-angular2
+Burcu Koçal GitHub: https://github.com/burcukocal/etiya8-rentacar
+Gülsenem Güven GitHub: https://github.com/gulsenemguvenn/etiya-angular2
