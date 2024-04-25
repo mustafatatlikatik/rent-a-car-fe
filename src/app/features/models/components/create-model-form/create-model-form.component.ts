@@ -66,6 +66,7 @@ export class CreateModelFormComponent {
   onFormSubmit() {
     if (this.form.invalid) {
       console.error('Form is invalid');
+      this.form.markAllAsTouched();
       return;
     }
     this.createModel();

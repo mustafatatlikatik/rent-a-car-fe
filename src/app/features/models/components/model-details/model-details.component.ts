@@ -3,13 +3,15 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@a
 import { ModelDetailsDto } from '../../models/model-details-dto';
 import { ModelsApiService } from '../../services/modelsApi.service';
 import { VatAddPipe } from '../../../../core/pipes/vat-add.pipe';
+import { HighlightDirective } from '../../../../core/directives/highlight.directive';
 
 @Component({
   selector: 'app-model-details',
   standalone: true,
   imports: [
     CommonModule,
-    VatAddPipe
+    VatAddPipe,
+    HighlightDirective
   ],
   templateUrl: './model-details.component.html',
   styleUrl: './model-details.component.scss',
