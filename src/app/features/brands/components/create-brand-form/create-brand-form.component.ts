@@ -7,7 +7,7 @@ import { ControlErrorMessagePipe } from '../../../../core/pipes/control-error-me
 import { Router, RouterModule } from '@angular/router';
 import { IfNotDirective } from '../../../../core/directives/if-not.directive';
 import { NoCharacterInputDirective } from '../../../../core/directives/no-character-input.directive';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-create-brand-form',
   standalone: true,
@@ -39,7 +39,8 @@ export class CreateBrandFormComponent {
   constructor(
     private fb: FormBuilder,
     private brandsApiService: BrandsApiService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   createBrand() {
@@ -56,6 +57,7 @@ export class CreateBrandFormComponent {
       complete: () => {
         console.log('Brand created successfully');
         this.form.reset();
+        this.toastr.success('Brand created successfully')
         this.router.navigate(['/home/brands']);
       },
     });

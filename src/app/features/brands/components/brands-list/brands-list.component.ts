@@ -11,7 +11,6 @@ import { BrandsApiService } from '../../services/brandsApi.service';
 import { BrandListItemDto } from '../../models/brand-list-item-dto';
 import { MultipleDirective } from '../../../../core/directives/multiple.directive';
 
-
 @Component({
   selector: 'app-brands-list',
   standalone: true,
@@ -32,7 +31,7 @@ export class BrandsListComponent implements OnInit {
 
   constructor(
     private brandsApiService: BrandsApiService,
-    private change: ChangeDetectorRef
+    private change: ChangeDetectorRef,
   // private modelsApiService: ModelsApiService,
 
   ) {}
@@ -52,6 +51,7 @@ export class BrandsListComponent implements OnInit {
     this.selectedItemId = this.list.findIndex(item => item.id === id);
     this.selectBrand.emit(id);
   }
+
 
   // ngOnInit(): void {
   //   this.brandsApiService.getList().subscribe((response) => {
