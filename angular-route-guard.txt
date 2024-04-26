@@ -1,0 +1,10 @@
+Angular Route Guard: Angular'da Route Guard'lar, uygulamanızın belirli rotalara erişimi kontrol etmesine ve rotalara erişim izni verilip verilmeyeceğini belirlemesine olanak tanır. Bu, uygulamanızın güvenliğini artırmak ve rotalar arasında geçiş yaparken belirli koşulların karşılanmasını sağlamak için kullanılır. Route Guard'lar, bir kullanıcının bir rotaya erişim yapmadan önce belirli koşulların karşılanmasını sağlayarak rotalara erişimi kontrol ederler.
+
+1. CanActivate: Belirli bir rotaya erişim izni verilip verilmeyeceğini belirlemek için kullanılır. Bir kullanıcının belirli bir rotaya erişim izni varsa, rotaya erişimine izin verilir. Aksi takdirde, rotaya erişim engellenir ve kullanıcı başka bir sayfaya yönlendirilebilir.
+
+2. CanActivateChild:  Bu, bir rotanın alt rotalarına erişim izni verilip verilmeyeceğini belirler. Örneğin, bir ana sayfanın altında farklı alt sayfalar olabilir ve bu alt sayfalara erişim izni, kullanıcının ana sayfaya erişim izni olduğu gibi kontrol edilebilir.
+
+3. CanDeactivate: Bir rotadan ayrılmadan önce kullanıcının onayı gerekip gerekmediğini belirler. Örneğin, bir form sayfasından ayrılmadan önce kullanıcıya değişiklikleri kaydetmesi gerekip gerekmediği sorulabilir.
+
+4. CanMatch: Tüm guardlar true değeri döndürdüğünde route etkinleştirilir ve lazy loading bileşenini yükler. Aksi taktirde, aynı adı taşıyan bir sonraki route'a yönlendirir.
+Uyarı: Bir rota ile eşleşmelidir aksi takdirde konsolda hata ile karşılaşabilirsiniz.
