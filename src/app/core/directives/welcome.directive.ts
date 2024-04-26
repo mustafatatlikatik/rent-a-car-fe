@@ -13,7 +13,7 @@ export class WelcomeDirective {
   @Input('appWelcomeThen') appWelcomeThen!: TemplateRef<any>;
   @Input('appWelcome') set delay(time: number) {
     this.viewContainer.createEmbeddedView(this.templateRef);
-    setTimeout(() => {
+      setTimeout(() => {
       this.viewContainer.clear();
       this.viewContainer.createEmbeddedView(this.appWelcomeThen);
     }, time);

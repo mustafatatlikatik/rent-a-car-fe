@@ -17,7 +17,7 @@ import { NoCharacterInputDirective } from '../../../../core/directives/no-charac
     ControlErrorMessagePipe,
     RouterModule,
     IfNotDirective,
-    NoCharacterInputDirective
+    NoCharacterInputDirective,
   ],
   templateUrl: './create-brand-form.component.html',
   styleUrl: './create-brand-form.component.scss',
