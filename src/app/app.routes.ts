@@ -12,6 +12,7 @@ import { CustomerPageComponent } from './routers/customer-page/customer-page.com
 import { RentalPageComponent } from './routers/rental-page/rental-page.component';
 import { securedRouteGuard } from './shared/guards/SecuredRoute.guard';
 import { logableRouteGuard } from './shared/guards/LogableRoute.guard';
+import { deactivatedFormGuard } from './shared/guards/deactivatedForm.guard';
 
 export const routes: Routes = [
   {
@@ -54,7 +55,8 @@ export const routes: Routes = [
   {
     path:'brands/create',
     component: CreateBrandPageComponent,
-    canActivate: [securedRouteGuard, logableRouteGuard],
+    canActivate: [securedRouteGuard, logableRouteGuard,],
+    canDeactivate: [deactivatedFormGuard],
     data: {
       requiredUserRole: 'admin',
     },
@@ -62,6 +64,7 @@ export const routes: Routes = [
   {
     path:'brands/update',
     component: UpdateBrandPageComponent,
+    canDeactivate: [deactivatedFormGuard],
   },
   {
     path:'models/create',
